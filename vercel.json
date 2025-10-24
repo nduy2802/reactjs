@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    },
+    {
+      "src": "api/tasks.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/tasks(.*)",
+      "dest": "/api/tasks"
+    },
+    {
+      "src": "/api/health",
+      "dest": "/api/tasks"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/frontend/dist/$1"
+    }
+  ],
+  "env": {
+    "MONGODB_CONNECTIONSTRING": "@mongodb_connectionstring"
+  }
+}

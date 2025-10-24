@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:7.0
+    container_name: todox-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - todox-network
+
+  # TodoX Application
+  todox-app:
+    build: .
+    container_name: todox-app
+    restart: unless-stopped
+    ports:
+      - "5001:5001"
+    environment:
+      - NODE_ENV=production
+      - PORT=5001
+      - MONGODB_CONNECTIONSTRING=mongodb://admin:password123@mongodb:27017/todox?authSource=admin
+    depends_on:
+      - mongodb
+    networks:
+      - todox-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  todox-network:
+    driver: bridge

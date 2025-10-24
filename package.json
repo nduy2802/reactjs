@@ -13,5 +13,14 @@
   "description": "",
   "engines": {
     "node": "22.x"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nduy2802/reactjs.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nduy2802/reactjs/issues"
+  },
+  "homepage": "https://github.com/nduy2802/reactjs#readme"
 }

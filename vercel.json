@@ -28,6 +28,6 @@
     }
   ],
   "env": {
-    "MONGODB_CONNECTIONSTRING": "@mongodb_connectionstring"
+    "MONGODB_CONNECTIONSTRING": "mongodb+srv://Duynguyeenn:638HQ9Mmz6CEekdK@cluster0.hkiikdq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
   }
 }
